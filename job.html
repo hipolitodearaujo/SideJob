@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>My Resume</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/resume.css" rel="stylesheet">
+    
+
+
+  </head>
+
+  <body id="page-top">
+  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none">Start Resume</span>
+        <span class="d-none d-lg-block">
+          <img id="picture" class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">
+        </span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="resume.html">My CV</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">Jobs</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#education">Education</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#interests">Interests</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#awards">Awards</a>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="container-fluid p-0">
+    
+	<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Jobs Available</h4>
+                                <p class="category">Job, Description and Location</p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <th>Id</th>
+                                    	<th>Job</th>
+                                    	<th>Description</th>
+                                    	<th>Location</th>
+                                    	<th>Creation Time</th>
+                                    	<th>Modification Time</th>
+                                    </thead>
+                                    <?php include('admin/php/request_table.php') ?>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/resume.min.js"></script>
+
+	<script type="text/javascript">
+		var param_value = JSON.parse(window.localStorage.getItem("ViewJob"));
+		new dataParse();
+		function dataParse() {
+// 			console.log("Resume: " + param_value.location);
+// 			document.querySelector("#firstName").innerHTML = param_value.firstName;
+// 			document.querySelector("#lastName").innerHTML = param_value.lastName;
+// 			document.querySelector("a[href^='mailto:']").href = "mailto:"
+// 					+ param_value.emailAddress;
+// 			document.querySelector("a[href^='mailto:']").innerHTML = param_value.emailAddress;
+// 			if(param_value.location.name!=null)
+// 				document.querySelector("#location").innerHTML = param_value.location.name;
+// 			else
+// 				document.querySelector("#location").innerHTML = param_value.location;
+// 			document.querySelector("a[href='#']").href = param_value.publicProfileUrl;
+			document.querySelector("#picture").src = param_value.pictureUrl;
+// 			document.querySelector("#summary").innerHTML = param_value.summary;
+// 			console.log("Resume:"+param_value.summary);
+// 			Object.defineProperty(param_value, 'isUpdate', {
+// 				  enumerable: true,   
+// 				  configurable: true, 
+// 				  writable: true,
+// 				  value: '1'
+// 			});
+// 			console.log("Resume:"+param_value.isUpdate);
+		}
+
+	</script>
+</body>
+
+</html>

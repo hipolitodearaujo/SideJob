@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SideJOB</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/coming-soon.css" rel="stylesheet">
+    <link href="css/sidejobot.css" rel="stylesheet" />
+    
+<!--     Initialize the Linkedin SDK -->
+ 	<script type="text/javascript" src="//platform.linkedin.com/in.js">
+             api_key:   776ptwf6ecyarl
+             onLoad: onLinkedInLoad
+             scope: r_emailaddress,r_basicprofile
+             authorize: false
+ 	</script>
+
+    <link href="BotFramework/botchat.css" rel="stylesheet" />
+
+  </head>
+
+  <body>
+    
+   <script src="js/linkedin-connec.js"></script>
+    
+    <div class="overlay"></div>
+
+    <div class="masthead">
+      <div class="masthead-bg"></div>
+      <div class="container h-100">
+        <div class="row h-100">
+          <div class="col-12 my-auto">
+				<div class="#BotChatGoesHere" id="BotChatGoesHere"></div>
+    			<script src="BotFramework/botchat.js"></script>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript -->
+    
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/vide/jquery.vide.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/coming-soon.min.js"></script>
+    
+    
+     <script>
+      const params = BotChat.queryParams(location.search);
+      
+      const user = {
+        id:  'You',
+        name: 'You'
+      };
+
+      const bot = {
+        id: 'sidejobot',
+        name: 'sidejobot'
+      };
+
+      window['botchatDebug'] = params['debug'] && params['debug'] === 'true';
+
+      const botConnection = new BotChat.DirectLine({
+        secret: 'yRNVdISGaMM.cwA.g7E.skeMM493-0bIT-O84pgEkn6FHGC_I-s96eu4KSaW_9s',
+      });
+
+      BotChat.App({
+        bot: bot,
+        botConnection: botConnection,
+        user: user
+      }, document.getElementById('BotChatGoesHere'));
+
+      botConnection.activity$
+        .filter(function (activity) {
+          return activity.type === 'event' && activity.name === 'createAccount';
+        })
+        .subscribe(function (activity) {
+          console.log('"Request" createAccount connection: ' + activity.value);
+          createAccount(activity.value);
+        });
+      
+//       botConnection.activity$
+//       .filter(function (activity) {
+//         return activity.type === 'event' && activity.name === 'linkedinConnec';
+//       })
+//       .subscribe(function (activity) {
+//         console.log('"Request" linkedin connection: ' + activity.value);
+//         linkedinConnec(activity.value);
+//       });
+
+      function createAccount(lnk) {
+    	  valueFromBot = lnk;
+    	  authLinkedin();
+    		  
+    	  
+      }
+      
+//       function linkedinConnec() {
+//     	  console.log('"[Request]" linkedin connection: ');
+//       }
+      
+//       function postStartConversation() {
+//           botConnection
+//             .postActivity({
+//               from: { id: 'me' },
+//               name: 'StartVirtualAssist',
+//               type: 'event',
+//               value: ''
+//             })
+//             .subscribe(function (id) {
+//               console.log('"StartVirtualAssist" sent');
+//             });
+//         };
+    </script>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Edit My Resume</title>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" type="text/css"
+	href="vendor/bootstrap/css/bootstrap.min.css">
+
+<!-- Custom fonts for this template -->
+<link
+	href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="vendor/font-awesome/css/font-awesome.min.css">
+<link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
+<link href="vendor/simple-line-icons/css/simple-line-icons.css"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/resume.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="./css/icon-font.min.css">
+
+<link rel="stylesheet" type="text/css" href="./css/animate.css">
+<link rel="stylesheet" type="text/css" href="./css/hamburgers.min.css">
+<link rel="stylesheet" type="text/css" href="./css/animsition.min.css">
+<link rel="stylesheet" type="text/css" href="./css/select2.min.css">
+<link rel="stylesheet" type="text/css" href="./css/daterangepicker.css">
+<link rel="stylesheet" type="text/css" href="./css/util.css">
+<link rel="stylesheet" type="text/css" href="./css/main.css">
+
+<style type="text/css">
+.backpack.dropzone {
+	font-family: 'SF UI Display', 'Segoe UI';
+	font-size: 15px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 250px;
+	height: 150px;
+	font-weight: lighter;
+	color: white;
+	will-change: right;
+	z-index: 2147483647;
+	bottom: 20%;
+	background: #333;
+	position: fixed;
+	user-select: none;
+	transition: left .5s, right .5s;
+	right: 0px;
+}
+
+.backpack.dropzone .animation {
+	height: 80px;
+	width: 250px;
+	background:
+		url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png")
+		left center;
+}
+
+.backpack.dropzone .title::before {
+	content: 'Save to';
+}
+
+.backpack.dropzone.closed {
+	right: -250px;
+}
+
+.backpack.dropzone.hover .animation {
+	animation: sxt-play-anim-hover 0.91s steps(21);
+	animation-fill-mode: forwards;
+	background:
+		url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/hoverstate.png")
+		left center;
+}
+
+@
+keyframes sxt-play-anim-hover {from { background-position:0px;
+	
+}
+
+to {
+	background-position: -5250px;
+}
+
+}
+.backpack.dropzone.saving .title::before {
+	content: 'Saving to';
+}
+
+.backpack.dropzone.saving .animation {
+	background:
+		url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saving_loop.png")
+		left center;
+	animation: sxt-play-anim-saving steps(59) 2.46s infinite;
+}
+
+@
+keyframes sxt-play-anim-saving { 100% {
+	background-position: -14750px;
+}
+
+}
+.backpack.dropzone.saved .title::before {
+	content: 'Saved to';
+}
+
+.backpack.dropzone.saved .animation {
+	background:
+		url("chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/assets/backpack/dropzone/saved.png")
+		left center;
+	animation: sxt-play-anim-saved steps(20) 0.83s forwards;
+}
+
+@
+keyframes sxt-play-anim-saved { 100% {
+	background-position: -5000px;
+}
+}
+</style>
+
+</head>
+
+<body id="page-top">
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top"
+		id="sideNav">
+		<a class="navbar-brand js-scroll-trigger" href="#page-top"> <span
+			class="d-block d-lg-none">Start Edit Resume</span> <span
+			class="d-none d-lg-block"> <img id="picture"
+				class="img-fluid img-profile rounded-circle mx-auto mb-2"
+				src="img/profile.jpg" alt="">
+		</span>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" onclick="viewProfile()">Perfil</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container-fluid p-0">
+		<div class="my-auto" id="presentation">
+			<form class="validate-form" action="php/insert_user.php" method="POST">
+				<section class="contact100-form resume-section p-3 p-lg-5 d-flex d-column" id="about">
+					<span class="contact100-form-title"> Edite Suas Informações </span> 
+					<input id="id" class="input100" type="hidden" name="id">
+					<input id="profilecadastro" class="input100" type="hidden" name="profilecadastro"> 
+					<input id="pictureUrl" class="input100" type="hidden" name="pictureUrl">
+
+					<label class="label-input100" for="firstName">Insira o seu nome *</label>
+					<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Type first name">
+						<input id="firstName" class="input100" type="text" name="firstName" placeholder="Primeiro Nome" onchange="onChange(event)"> 
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Type last name">
+						<input id="lastName" class="input100" type="text" name="lastName" placeholder="Segundo Nome" onchange="onChange(event)"> 
+						<span class="focus-input100"></span>
+					</div>
+
+					<label class="label-input100" for="firstName">Insira os seus contatos *</label>
+					<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+						<input id="emailcadastro" class="input100" type="email" name="emailcadastro" placeholder="E-mail" onchange="onChange(event)"> 
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Type Fone">
+						<input id="phone" class="input100" type="tel" name="phone" placeholder="Telefone" onchange="onChange(event)"> 
+						<span class="focus-input100"></span>
+					</div>
+
+					<label class="label-input100" for="location">Digite a sua cidade</label>
+					<div class="wrap-input100">
+						<input id="location" class="input100" type="text" name="location" placeholder="São Paulo Area, Brazil" onchange="onChange(event)">
+						<span class="focus-input100"></span>
+					</div>
+
+					<label class="label-input100" for="age">Digite a sua idade (anos)</label>
+					<div class="wrap-input100">
+						<input id="age" class="input100" type="number" name="age" placeholder="30" onchange="onChange(event)"> 
+						<span class="focus-input100"></span>
+					</div>
+
+					<label class="label-input100" for="hours">Qual a quantidade de horas disponíveis para um plano B? (horas)</label>
+					<div class="wrap-input100">
+						<input id="hours" class="input100" type="number" name="hours" placeholder="2" onchange="onChange(event)"> 
+						<span class="focus-input100"></span>
+					</div>
+
+					<label class="label-input100" for="message">Resumo Profissional *</label>
+					<div class="wrap-input100 validate-input" data-validate="Summary is required">
+						<textarea id="summary" class="input100" name="summary" placeholder="Seu resumo profissional aqui." onchange="onChange(event)"></textarea>
+						<span class="focus-input100"></span>
+					</div>
+					
+					<label class="label-input100" for="firstName">Insira a sua úlitma formação acadêmica*</label>
+					<div class="wrap-input100 validate-input" data-validate="Type your role">
+						<input id="university" class="input100" type="text" name="university" placeholder="Universidade" onchange="onChange(event)"> 
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Type your course">
+						<input id="course" class="input100" type="text" name="course" placeholder="Curso Atual" onchange="onChange(event)"> 
+						<span class="focus-input100"></span>
+					</div>
+					
+					<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Type Start Date">
+						<input id="startDateCourse" class="input100" type="month" name="startDateCourse" placeholder="Data de Início" onchange="onChange(event)"> 
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Type End Date">
+						<input id="endDateCourse" class="input100" type="month" name="endDateCourse" placeholder="Data de Termino" onchange="onChange(event)">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div data-validate="Is Current">
+						<input type="checkbox" id="IsCurrentCourse" name="subscribe" value="IsCurrent" onclick="isCurrentCourse(this);"> 
+						<label for="IsCurrent">Estudo Aqui Atualmente</label> 
+						<span class="focus-input100"></span>
+					</div>
+					
+					<label class="label-input100" for="firstName">Insira a sua experiência profissional atual*</label>
+					<div class="wrap-input100 validate-input" data-validate="Type your role">
+						<input id="title" class="input100" type="text" name="title" placeholder="Cargo Atual" onchange="onChange(event)"> 
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Type your compay">
+						<input id="company" class="input100" type="text" name="company" placeholder="Empresa Atual" onchange="onChange(event)"> 
+						<span class="focus-input100"></span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" data-validate="Type the role description">
+						<input id="description" class="input100" type="text" name="description" placeholder="Descrição do cargo" onchange="onChange(event)"> 
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Type Start Date">
+						<input id="startDate" class="input100" type="month" name="startDate" placeholder="Data de Início" onchange="onChange(event)"> 
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Type End Date">
+						<input id="endDate" class="input100" type="month" name="endDate" placeholder="Data de Termino" onchange="onChange(event)">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div data-validate="Is Current">
+						<input type="checkbox" id="IsCurrent" name="subscribe" value="IsCurrent" onclick="isCurrentJob(this);"> 
+						<label for="IsCurrent">Trabalho Aqui Atualmente</label> 
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="container-contact100-form-btn">
+						<a href="#" onclick="viewProfile()">
+							<button id="register" type="submit" class="contact100-form-btn"
+								onclick="cadastro(
+								document.getElementById('id').value, 
+								document.getElementById('firstName').value, 
+								document.getElementById('lastName').value, 
+								document.getElementById('age').value,
+								document.getElementById('hours').value,
+								document.getElementById('emailcadastro').value, 
+								document.getElementById('phone').value, 
+								document.getElementById('profilecadastro').value,
+								document.getElementById('location').value, 
+								document.getElementById('pictureUrl').value, 
+								document.getElementById('summary').value,
+								document.getElementById('title').value,
+								document.getElementById('company').value,
+								document.getElementById('startDate').value,
+								document.getElementById('endDate').value,
+								document.getElementById('description').value,),">
+								Register</button>
+						</a>
+					</div>
+				</section>
+			</form>
+		</div>
+	</div>
+
+    <div id="dropDownSelect1"></div>
+
+	<script data-cfasync="false" src="js/email-decode.min.js"></script>
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+	<script src="vendor/select2/select2.min.js"></script>
+	
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="js/resume.min.js"></script>
+
+	<script type="text/javascript">
+	  var param_value = JSON.parse(window.localStorage.getItem("registerData"));
+	  new dataParse();
+	  function dataParse() {
+		  document.querySelector("#firstName").value = param_value.firstName;
+		  document.querySelector("#lastName").value = param_value.lastName;
+		  document.querySelector("#emailcadastro").value= param_value.emailAddress;
+		  document.querySelector("#profilecadastro").value=param_value.publicProfileUrl;
+		  document.querySelector("#id").value=param_value.id;
+		  document.querySelector("#pictureUrl").value = param_value.pictureUrl;
+		  document.querySelector("#picture").src = param_value.pictureUrl;
+		  document.querySelector("#summary").value = param_value.summary;
+		  document.querySelector("#age").value = param_value.age;
+		  document.querySelector("#hours").value = param_value.hours;
+		  
+		  if(param_value.location.name!=null){
+			  document.querySelector("#location").value = param_value.location.name;
+		  }
+		  //Usuário novo cadastrado
+		  else{
+			  document.querySelector("#location").value = param_value.location;
+		  }
+		  
+		  
+		  try {
+			  var company = param_value.positions.values[0];
+			  
+			  document.querySelector("#title").value = company.title;
+			  document.querySelector("#startDate").value = company.startDate.year+"-"+company.startDate.month;
+			  document.querySelector("#company").value = company.company.name;
+			  document.querySelector("#description").value = company.summary;
+			  
+			  if(company.isCurrent){
+			      document.querySelector("#endDate").setAttribute('type','text');
+			      document.querySelector("#endDate").value = "Atual";
+			      document.querySelector("input[type=checkbox]").checked = true;
+			  }
+		  }
+		  catch(err) {
+			  console.log("Error:"+err.message);
+			  document.querySelector("#title").value = param_value.jobTitle;
+			  document.querySelector("#startDate").value = param_value.startDate;
+			  if(param_value.endDate=="Atual"){
+				document.querySelector("#endDate").setAttribute('type','text');
+			  	document.querySelector("#endDate").value = param_value.endDate;
+			  	document.querySelector("input[type=checkbox]").checked = true;
+			  }
+			  else
+				  document.querySelector("#endDate").value = param_value.endDate;
+			  document.querySelector("#company").value = param_value.companyName;
+			  document.querySelector("#description").value = param_value.description;
+		  }
+	  }
+	  function viewProfile() {
+			console.log("viewProfile: " + param_value.firstName);
+			window.localStorage.setItem("resumeData", JSON
+					.stringify(param_value));
+			window.self.location.href = "resume.html";
+			
+	  }
+	  
+	  function isCurrentJob(checkbox){
+		  if(checkbox.checked) {
+			  document.querySelector("#endDate").setAttribute('type','text');
+		      document.querySelector("#endDate").value = "Atual";
+		  } else {
+			  document.querySelector("#endDate").setAttribute('type','month');
+		  }
+	  }
+	  
+	  function isCurrentCourse(checkbox){
+		  if(checkbox.checked) {
+			  document.querySelector("#endDateCourse").setAttribute('type','text');
+		      document.querySelector("#endDateCourse").value = "Atual";
+		  } else {
+			  document.querySelector("#endDateCourse").setAttribute('type','month');
+		  }
+	  }
+	  
+	  function onChange(event){
+		  var target = event.target || event.srcElement;
+		  if(target.id == "firstName"){
+			  param_value.firstName = target.value;
+			  console.log("viewProfile: " + param_value.firstName);
+		  } else if (target.id == "lastName"){
+			  param_value.lastName = target.value;
+			  
+		  } else if(target.id == "emailcadastro"){
+			  param_value.emailAddress = target.value;
+			 
+		  } else if (target.id == "location"){
+			  param_value.location = target.value;
+			  
+		  }else if (target.id == "summary"){
+			  param_value.summary = target.value;
+			  
+		  }else if (target.id == "age"){
+			  param_value.age = target.value;
+			  
+		  }else if (target.id == "hours"){
+			  param_value.hours = target.value;
+			  
+		  }
+		  else if (target.id == "jobTitle"){
+			  param_value.title = target.value;
+			  
+		  }
+		  else if (target.id == "startDate"){
+			  param_value.startDate = target.value;
+			  
+		  }
+		  else if (target.id == "endDate"){
+			  param_value.endDate = target.value;
+			  
+		  }
+		  else if (target.id == "companyName"){
+			  param_value.company = target.value;
+			  
+		  }
+		  else if (target.id == "description"){
+			  param_value.description = target.value;
+			  
+		  }
+	  }
+	  
+
+    </script>
+
+</body>
+
+</html>
